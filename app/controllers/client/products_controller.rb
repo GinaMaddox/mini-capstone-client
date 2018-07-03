@@ -13,5 +13,5 @@ class Client::ProductsController < ApplicationController
     render "show.html.erb"
   end
 
-  def new 
+  # def new 
 end
