@@ -1,8 +1,9 @@
-<p>This is your recipe</p>
+<p>This is your product</p>
 
-<p>id: <%= @products['id'] %></p>
-<p>name: <%= @products['name'] %></p>
-<p>price: <%= @products['price'] %></p>
-<p>description: <%= @products['description'] %></p>
-<p>image_url: <%= @products['image_url'] %></p>
+<p>id: <%= @product['id']%></p>
+<p>name: <%= @product['name']%></p>
+<p>price: <%= @product['price']%></p>
+<p>description: <%= @product['description']%></p>
+<p>image_url: <%= @product['image_url']%></p>
   
+<p><a href= "/client/products/<% @product['id']%>/edit">Edit or Delete This Product</a></p>
