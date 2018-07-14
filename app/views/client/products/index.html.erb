@@ -14,7 +14,9 @@
     <h4 style="color: green;">Everyday Value!</h4>
   <% end %>
   <h3>Description: <%= product['description'] %></h3>
-  <img src= "<%= product['images'][0]['image_url'] %>">
+  <% product['images'].each do |image| %>
+  <img src= "<%= image['image_url'] %>">
+  <% end %>
   <hr>
   <hr>
 <% end %>
