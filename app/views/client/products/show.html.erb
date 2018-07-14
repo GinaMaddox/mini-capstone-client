@@ -1,9 +1,26 @@
-<p>This is your product</p>
 
-<p>id: <%= @product['id']%></p>
-<p>name: <%= @product['name']%></p>
-<p>price: <%= @product['price']%></p>
-<p>description: <%= @product['description']%></p>
-<p>image_url: <%= @product['image_url']%></p>
+
+
+
+<h2><%= @product["name"] %></h2>
+<h2>Made by: <%= @product['supplier']['name'] %></h2>
+  <h2>Price: <%= @product['price'] %> <% if @product["formatted"]["is_discounted?"] %>
+    <h1 style="color: red;">Discounted Item!</h1>
+    <% else %>
+    <h1 style="color: green;">Everyday Value!</h1>
+  <% end %>
+  <h4>Tax: <%= @product["formatted"]["tax"] %></h4>
+<h4>Total: <%= @product["formatted"]["total"] %></h4>
+  <h3><%= @product['description'] %></h3>
+
+
+
+<!-- <p>Name: <%= @product['name'] %></p>
+<p>made by: <%= @product['supplier']['name'] %></p>
+<p>Price: <%= @product['price'] %></p>
+<p>Description: <%= @product['description'] %></p> -->
+<!-- <p>Image URL: <%= @product['image_url'] %></p> -->
+
   
-<p><a href= "/client/products/<% @product['id']%>/edit">Edit or Delete This Product</a></p>
+<a href= "/client/products/<% @product['id']%>/edit">Edit</a>
+<a href="/client/products/<%= @product['id'] %>" data-method="delete">Delete</a>

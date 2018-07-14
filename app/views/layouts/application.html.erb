@@ -11,6 +11,10 @@
 
   <body>
     <p><a href= "/client/products"> Home Page </a></p>
+    <% flash.each do |name, message| %>
+     <h1><%= message %></h1>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
