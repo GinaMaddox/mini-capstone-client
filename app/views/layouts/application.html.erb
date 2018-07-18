@@ -10,7 +10,14 @@
   </head>
 
   <body>
-    <p><a href= "/client/products"> Home Page </a></p>
+    <a href= "/client/products"> Home</a>
+    <a href="/client/products/new">New Product</a>
+    <a href="/client/signup">Sign Up</a>
+    <a href="/client/login">Log In</a>
+    <a href="/client/logout" data-method="delete">Log Out</a>
+    <%= @jwt %>
+
+    
     <% flash.each do |name, message| %>
      <h1><%= message %></h1>
     <% end %>
