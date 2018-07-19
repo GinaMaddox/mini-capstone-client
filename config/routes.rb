@@ -18,9 +18,10 @@ Rails.application.routes.draw do
    post "/login" => "sessions#create"
    delete "/logout" => "sessions#destroy"
 
-  
+  #order routes
   post '/orders' => 'orders#create'
-  get '/orders/new' => 'orders#new'
   get '/orders/:id' => 'orders#show'
   end
 end
+
+#order placement form is on product - show.html.erb page.  Therefore, #new route, #new controller, #new.html.erb are not needed

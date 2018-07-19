@@ -1,3 +1,5 @@
+
+<!-- this page is shown after new order is created -->
 <h1>Here is your order</h1>
 
 <p>ID: <%= @order['id'] %></p>
@@ -7,3 +9,7 @@
 <p>Subtotal: <%= @order['subtotal'] %></p>
 <p>Tax: <%= @order['tax'] %></p>
 <p>Total: <%= @order['total'] %></p>
+<p>Email: <%= @order['user']['email'] %></p>
+<p>Product Name: <%= @order['product']['name'] %></p>
+
+
