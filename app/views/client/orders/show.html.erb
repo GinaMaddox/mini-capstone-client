@@ -4,12 +4,17 @@
 
 <p>ID: <%= @order['id'] %></p>
 <p>User ID: <%= @order['user_id'] %></p>
-<p>Product ID: <%= @order['product_id'] %></p>
 <p>Quantity: <%= @order['quantity'] %></p>
 <p>Subtotal: <%= @order['subtotal'] %></p>
 <p>Tax: <%= @order['tax'] %></p>
 <p>Total: <%= @order['total'] %></p>
 <p>Email: <%= @order['user']['email'] %></p>
-<p>Product Name: <%= @order['product']['name'] %></p>
 
+
+<h1> Detailed product info</h1>
+
+  <p>Quantity: <%= carted_product['quantity'] %></p>
+  <p>Price: <%= carted_product['product']['price'] %></p>
+  <p>Name: <%= carted_product['product']['name'] %></p>
+  <hr>
 

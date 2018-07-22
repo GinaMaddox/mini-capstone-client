@@ -1,0 +1,6 @@
+ <%= form_tag "/client/carted_products", method: :post do %>
+
+  <input type="text" name="product_id" />
+  <input type="text" name="quantity" />
+  <input type="submit" value="Add product to cart" />
+ <% end %>
