@@ -1,8 +1,11 @@
 class Client::ProductsController < ApplicationController
   def index
-    user_input = params[:client_search]
-    response = Unirest.get("http://localhost:3000/api/products", parameters: {search: user_input,
-    })
+    client_params = {
+      search_name: params[:client_search_name],
+      sort_by: params[:client_sort_by],
+      category: params[:category]
+    }
+    response = Unirest.get("http://localhost:3000/api/products", parameters: client_params)
     @products = response.body
     render "index.html.erb"
   end  
@@ -16,22 +19,29 @@ class Client::ProductsController < ApplicationController
   end
 
   def new 
+    @product = {}
     render "new.html.erb"
   end
 
   def create
-    response = Unirest.post("localhost:3000/api/products", parameters:
-     {
+    @product = {
       name: params[:name],
       price: params[:price],
       image_url: params[:image_url],
       description: params[:description],
       supplier_id: params[:supplier_id]
     }
+    response = Unirest.post("localhost:3000/api/products", parameters: @product
+     
    )
-   @product = response.body
-   flash[:success] = "You created a new product"
-   redirect_to "/client/products/#{@product['id']}"
+   
+   if response.code == 200
+     flash[:success] = "You created a new product"
+     redirect_to "/client/products/"
+   else
+      @errors = response.body['errors']
+      render "new.html.erb"
+    end
   end
 
   def edit
@@ -42,23 +52,26 @@ class Client::ProductsController < ApplicationController
   end
 
   def update
-    product_id = params[:id]
-    client_params = {
+    @product= {
      name: params[:name],
      price: params[:price],
      image_url: params[:image_url],
      description: params[:description]
     }
-   response = Unirest.patch("http://localhost:3000/api/products#{product_id}", parameters: client_params)
-   @product = response.body
-   flash[:success] = "You updated a product"
-   redirect_to "/client/products/#{@product['id']}"
+   response = Unirest.patch("http://localhost:3000/api/products/#{product_id}", parameters: @product)
+    if response.code == 200
+     flash[:success] = "You updated a product"
+     redirect_to "/client/products/#{@product['id']}"
+    else
+     @errors = response.body['errors']
+     render "edit.html.erb"
+   end
   end
 
   def destroy
     product_id = params[:id]
     response = Unirest.delete("localhost:3000/api/products/#{product_id}")
-    flash[:danger] = "You deleted a product"
+    flash[:success] = "You deleted a product"
     redirect_to "/client/products"
   end
 end

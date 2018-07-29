@@ -13,10 +13,8 @@ class Client::CartedProductsController < ApplicationController
   def create
     response = Unirest.post('localhost:3000/api/carted_products',
       parameters: {
-        user_id: params[:user_id],
         product_id: params[:product_id],
-        quantity: params[:quantity],
-        status: params[:status]
+        quantity: params[:quantity]
       })
     @carted_product = response.body
     # render "show.html.erb"

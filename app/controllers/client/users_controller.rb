@@ -19,10 +19,10 @@ def create
   if response.code == 200
     session[:user_id] = response.body["id"]
     flash[:success] = 'Successfully created account!'
-    redirect_to '/client/products'
+    redirect_to '/products'
   else
     flash[:warning] = 'Invalid email or password!'
-    redirect_to '/client/signup'
+    redirect_to '/signup'
   end
 end
 
